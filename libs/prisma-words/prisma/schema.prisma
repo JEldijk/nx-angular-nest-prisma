@@ -1,0 +1,15 @@
+generator client {
+  provider        = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./db.sql"
+}
+
+model Words {
+  id String @id @default(cuid())
+  word String
+  category String
+  difficulty String
+}

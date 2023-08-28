@@ -1,0 +1,43 @@
+@startuml wordBlitz
+!theme spacelab
+
+entity Player {
+  +player_id : int
+  name : string
+  turn_order : int
+}
+
+entity Team {
+  +team_id : int
+  team_name : string
+  score : int
+}
+
+entity Game {
+  +game_id : int
+  game_status : string
+  target_points : int
+  selected_categories : string
+  difficulty_level : string
+}
+
+entity Turn {
+  +turn_id : int
+  points_achieved : int
+  max_words : int
+  player_id : int
+}
+
+entity Word {
+  +word_id : int
+  word : string
+  category : string
+  difficulty : string
+}
+
+Player -- Team : belongs to
+Team -- Game : plays
+Game -- Turn : has
+Turn -- Player : taken by
+Turn -- Word : uses
+@enduml

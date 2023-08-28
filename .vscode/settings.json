@@ -1,5 +1,11 @@
 {
-    "conventionalCommits.scopes": [
-        "workspace"
-    ]
+  "conventionalCommits.scopes": [
+    "workspace",
+    "words-prisma",
+    "words-api",
+    "client-prisma",
+    "client-api",
+    "player-prisma",
+    "player-api"
+  ]
 }
