@@ -1,5 +1,6 @@
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
+  output = "../../../node_modules/@prisma/client/words"
 }
 
 datasource db {
@@ -8,8 +9,8 @@ datasource db {
 }
 
 model Words {
-  id String @id @default(cuid())
-  word String
-  category String
+  id         String @id @default(cuid())
+  word       String
+  category   String
   difficulty String
 }

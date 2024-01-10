@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "prisma-words": ["libs/prisma-words/src/index.ts"]
+      "prisma-words": ["libs/prisma-words/src/index.ts"],
+      "words-prisma-client": ["libs/words-prisma-client/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

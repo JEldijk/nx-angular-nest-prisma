@@ -1,0 +1,30 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(player, "Player")
+Person(admin, "Administrator")
+
+System_Boundary(k8s, "Kubernetes Cluster") {
+  Container(ms1, "NestJS Microservice 1", "NestJS", "Handles game logic")
+  Container(ms2, "NestJS Microservice 2", "NestJS", "Handles user management")
+  Container(msN, "NestJS Microservice N", "NestJS", "Handles other services")
+  Container(db, "Prisma Database Client", "Prisma", "Handles data storage")
+  Container(helm, "Helm", "Helm", "Manages deployments")
+}
+
+System_Boundary(frontend, "Angular Frontend") {
+  Container(angularApp, "Angular App", "Angular", "User Interface")
+}
+
+Rel(player, angularApp, "Uses", "HTTP/HTTPS")
+Rel(admin, angularApp, "Manages", "HTTP/HTTPS")
+Rel(angularApp, ms1, "Communicates with", "HTTP/HTTPS")
+Rel(angularApp, ms2, "Communicates with", "HTTP/HTTPS")
+Rel(angularApp, msN, "Communicates with", "HTTP/HTTPS")
+Rel(ms1, db, "Reads/Writes to", "SQL/NoSQL")
+Rel(ms2, db, "Reads/Writes to", "SQL/NoSQL")
+Rel(msN, db, "Reads/Writes to", "SQL/NoSQL")
+Rel(helm, ms1, "Deploys", "K8s API")
+Rel(helm, ms2, "Deploys", "K8s API")
+Rel(helm, msN, "Deploys", "K8s API")
+@enduml
